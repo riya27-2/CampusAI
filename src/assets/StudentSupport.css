@@ -1,0 +1,80 @@
+.student-support-page {
+  padding: 30px;
+  background: #f8fafc;
+  min-height: calc(100vh - 70px);
+}
+
+.student-support-header {
+  margin-bottom: 30px;
+}
+
+.student-support-header h1 {
+  margin: 0 0 10px;
+  color: #123b6d;
+  font-size: 30px;
+}
+
+.student-support-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* Cards Grid */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* Individual Card */
+.support-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+}
+
+.support-card h2 {
+  margin: 0 0 12px;
+  color: #123b6d;
+  font-size: 20px;
+}
+
+.support-card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Full width card */
+.support-card.full-width {
+  grid-column: span 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .student-support-page {
+    padding: 20px;
+  }
+
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-card.full-width {
+    grid-column: span 1;
+  }
+
+  .student-support-header h1 {
+    font-size: 25px;
+  }
+}

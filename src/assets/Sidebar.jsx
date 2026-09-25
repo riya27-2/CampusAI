@@ -28,7 +28,9 @@ function Sidebar() {
           📚 Courses
         </NavLink>
 
-        
+        <NavLink to="/FeeStructure">
+          💰 Fee Structure
+        </NavLink>
 
        
 
@@ -43,11 +45,13 @@ function Sidebar() {
         <NavLink to="/events">
           🎉 Events
         </NavLink>
+        <NavLink to="/StudentSupport">
+          💰 Student Support
+        </NavLink>
 
       </nav>
 
       <div className="sidebar-bottom">
-        <a href="#">⚙ Settings</a>
         <a href="#">↪ Logout</a>
       </div>
 

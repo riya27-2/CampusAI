@@ -1,0 +1,119 @@
+.fee-page {
+  padding: 50px 7%;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.fee-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.fee-header h1 {
+  font-size: 38px;
+  color: #123b6d;
+  margin-bottom: 12px;
+}
+
+.fee-header p {
+  color: #64748b;
+  font-size: 17px;
+}
+
+.fee-section,
+.support-section {
+  margin-bottom: 50px;
+}
+
+.fee-section h2,
+.support-section h2 {
+  text-align: center;
+  color: #123b6d;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.fee-table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.fee-table th {
+  background: #123b6d;
+  color: white;
+  padding: 17px;
+  text-align: left;
+}
+
+.fee-table td {
+  padding: 17px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.fee-table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.fee-amount {
+  font-weight: 700;
+  color: #123b6d !important;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.support-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+  transition: 0.3s;
+}
+
+.support-card:hover {
+  transform: translateY(-5px);
+}
+
+.support-card h3 {
+  color: #123b6d;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.support-card p {
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .support-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .fee-page {
+    padding: 35px 20px;
+  }
+
+  .fee-header h1 {
+    font-size: 30px;
+  }
+
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}
