@@ -1,0 +1,248 @@
+
+.courses-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f8fafc;
+}
+
+/* Header */
+.courses-label {
+  margin: 0 0 8px;
+  color: #4f46e5;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.courses-page h1 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 32px;
+}
+
+.courses-description {
+  margin: 10px 0 25px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* Degree / Diploma Tabs */
+.course-tabs {
+  display: flex;
+  gap: 5px;
+  width: fit-content;
+  margin-bottom: 30px;
+  padding: 5px;
+
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.course-tabs button {
+  padding: 10px 24px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #64748b;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.course-tabs button:hover {
+  color: #4f46e5;
+}
+
+.course-tabs button.active {
+  background: #4f46e5;
+  color: white;
+}
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  max-width: 1100px;
+}
+
+/* Course Card */
+.course-card {
+  display: flex;
+  gap: 20px;
+
+  padding: 25px;
+
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+
+  transition: 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #c7d2fe;
+
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+}
+
+/* Icon */
+.course-icon {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef2ff;
+  border-radius: 14px;
+
+  font-size: 28px;
+}
+
+/* Content */
+.course-content {
+  flex: 1;
+}
+
+.course-card h2 {
+  margin: 0 0 10px;
+
+  color: #1e293b;
+  font-size: 19px;
+}
+
+.course-card p {
+  margin: 0 0 20px;
+
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Course Information */
+.course-info {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 20px;
+}
+
+.course-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.course-info-item strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+/* Know More */
+.know-more-button {
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #4f46e5;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.know-more-button:hover {
+  background: #4338ca;
+}
+
+/* No Diploma Courses */
+.no-courses {
+  max-width: 700px;
+  padding: 50px 30px;
+
+  text-align: center;
+
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.no-courses-icon {
+  margin-bottom: 15px;
+  font-size: 40px;
+}
+
+.no-courses h2 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+.no-courses p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .courses-page {
+    padding: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .courses-page {
+    padding: 20px;
+  }
+
+  .courses-page h1 {
+    font-size: 26px;
+  }
+
+  .course-card {
+    padding: 20px;
+  }
+
+  .course-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 23px;
+  }
+
+  .course-card h2 {
+    font-size: 17px;
+  }
+
+  .course-info {
+    gap: 20px;
+  }
+}

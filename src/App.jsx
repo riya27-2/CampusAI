@@ -4,7 +4,8 @@ import Sidebar from "./assets/Sidebar";
 import Topbar from "./assets/Topbar";
 
 import Dashboard from "./assets/dashboard";
-import Academics from "./assets/Academic";
+import Departments from "./assets/Departments";
+import Courses from "./assets/Courses";
 
 import "./assets/dashboard.css";
 
@@ -34,8 +35,12 @@ function App() {
               />
 
               <Route
-                path="/academics"
-                element={<Academics />}
+                path="/Departments"
+                element={<Departments />}
+              />
+              <Route
+                path="/Courses"
+                element={<Courses />}
               />
 
             </Routes>

@@ -19,10 +19,7 @@ function Sidebar() {
           ⌂ Dashboard
         </NavLink>
 
-        <NavLink to="/academics">
-          ▣ Academics
-        </NavLink>
-
+       
         <NavLink to="/departments">
           ▦ Departments
         </NavLink>
@@ -31,13 +28,9 @@ function Sidebar() {
           📚 Courses
         </NavLink>
 
-        <NavLink to="/faculty">
-          👨‍🏫 Faculty
-        </NavLink>
+        
 
-        <NavLink to="/students">
-          👨‍🎓 Students
-        </NavLink>
+       
 
         <NavLink to="/syllabus">
           📄 Syllabus
