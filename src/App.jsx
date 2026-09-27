@@ -8,6 +8,7 @@ import Departments from "./assets/Departments";
 import Courses from "./assets/Courses";
 import FeeStructure from "./assets/FeeStructure";
 import StudentSupport from "./assets/StudentSupport";
+import Syllabus from "./assets/Syllabus";
 
 import "./assets/dashboard.css";
 
@@ -51,6 +52,10 @@ function App() {
                <Route
                 path="/StudentSupport"
                 element={<StudentSupport />}
+              />
+               <Route
+                path="/Syllabus"
+                element={<Syllabus />}
               />
 
             </Routes>
