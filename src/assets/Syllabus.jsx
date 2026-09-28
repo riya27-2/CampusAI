@@ -448,8 +448,7 @@ const syllabusData = {
       ],
 
       8: [
-        
-        {
+         {
           name: "Internship",
           pdf: "/IT/Internship-Project (2).pdf",
         },
