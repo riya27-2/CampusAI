@@ -236,149 +236,224 @@ const syllabusData = {
       1: [
         {
           name: "Mathematics - I",
-          pdf: "/pdf/syllabus/it/sem1/mathematics-1.pdf",
+          pdf: "/CE/Maths-I.pdf",
         },
         {
           name: "Programming for Problem Solving",
-          pdf: "/pdf/syllabus/it/sem1/programming.pdf",
+          pdf: "/CE/PPS.pdf",
         },
         {
-          name: "Engineering Physics",
-          pdf: "/pdf/syllabus/it/sem1/physics.pdf",
+          name: "Physics",
+          pdf: "/CE/Physics.pdf",
+        },
+        {
+          name: "Basic Electronics Engineering",
+          pdf: "/CE/BEE.pdf",
+        },
+        {
+          name: "Basic Mechanical Engineering",
+          pdf: "/CE/BME.pdf",
+        },
+        {
+          name: "Chemistry",
+          pdf: "/CE/Chemistry.pdf",
         },
         {
           name: "Basic Electrical Engineering",
-          pdf: "/pdf/syllabus/it/sem1/electrical.pdf",
+          pdf: "/CE/BEE - BE01R00051.pdf",
+        },
+        {
+          name: "Programming for Problem Solving",
+          pdf: "/CE/PPS.pdf",
+        },
+        {
+          name: "Universal Human Values",
+          pdf: "/CE/UHV.pdf",
+        },{
+          name: "Contributor Personality Development Program",
+          pdf: "/CE/CPDP.pdf",
+        },{
+          name: "Integrated Personality Development Course",
+          pdf: "/CE/IPDC.pdf",
         },
       ],
 
       2: [
         {
           name: "Mathematics - II",
-          pdf: "/pdf/syllabus/it/sem2/mathematics-2.pdf",
+          pdf: "/CE/Maths-2.pdf",
         },
         {
-          name: "Data Structures",
-          pdf: "/pdf/syllabus/it/sem2/data-structures.pdf",
+          name: "English for Technical Communication",
+          pdf: "/CE/ETC.pdf",
         },
         {
-          name: "Digital Electronics",
-          pdf: "/pdf/syllabus/it/sem2/digital-electronics.pdf",
+          name: "Intellectual Property Rights",
+          pdf: "/CE/IPR.pdf",
         },
         {
-          name: "Object Oriented Programming",
-          pdf: "/pdf/syllabus/it/sem2/oop.pdf",
+          name: "Engineering Graphics",
+          pdf: "/CE/EGD.pdf",
+        },{
+          name: "Industrial Safety and Standards",
+          pdf: "/CE/ISS.pdf",
         },
       ],
 
       3: [
         {
+          name: "Probability and Statistics",
+          pdf: "/CE/PS.pdf",
+        },
+        {
           name: "Database Management System",
-          pdf: "/pdf/syllabus/it/sem3/dbms.pdf",
+          pdf: "/CE/DBMS.pdf",
         },
         {
-          name: "Computer Organization",
-          pdf: "/pdf/syllabus/it/sem3/computer-organization.pdf",
+          name: "Digital Fundamentals",
+          pdf: "/CE/DF.pdf",
         },
         {
-          name: "Discrete Mathematics",
-          pdf: "/pdf/syllabus/it/sem3/discrete-mathematics.pdf",
+          name: "Data structure",
+          pdf: "/CE/DS.pdf",
         },
         {
-          name: "Web Technology",
-          pdf: "/pdf/syllabus/it/sem3/web-technology.pdf",
+          name: "Professional Communication and Ethics",
+          pdf: "/CE/PCE.pdf",
+        },{
+          name: "Indian Constitution",
+          pdf: "/CE/IC.pdf",
+        },{
+          name: "Indian Knowledge System for Engineering",
+          pdf: "/CE/IKS.pdf",
         },
       ],
 
       4: [
         {
-          name: "Operating System",
-          pdf: "/pdf/syllabus/it/sem4/os.pdf",
+          name: "Environmental Science, Sustainability and Renewable Energy",
+          pdf: "/CE/ESSRE.pdf",
         },
         {
-          name: "Computer Networks",
-          pdf: "/pdf/syllabus/it/sem4/computer-networks.pdf",
+          name: "Operating System",
+          pdf: "/CE/OS.pdf",
+        },
+        {
+          name: "Object Oriented Programming",
+          pdf: "/CE/OOP.pdf",
         },
         {
           name: "Analysis and Design of Algorithms",
-          pdf: "/pdf/syllabus/it/sem4/ada.pdf",
+          pdf: "/CE/ADA.pdf",
         },
         {
-          name: "Microprocessor and Microcontroller",
-          pdf: "/pdf/syllabus/it/sem4/microprocessor.pdf",
+          name: "Computer Organization & Architecture",
+          pdf: "/CE/COA.pdf",
+        },
+        {
+          name: "Discrete Mathematics and Graph Theory",
+          pdf: "/CE/DMGT.pdf",
         },
       ],
 
       5: [
+        
         {
-          name: "Software Engineering",
-          pdf: "/pdf/syllabus/it/sem5/software-engineering.pdf",
+          name: "Computer Graphics and Visualization",
+          pdf: "/IT/CGV.pdf",
         },
         {
-          name: "Web Development",
-          pdf: "/pdf/syllabus/it/sem5/web-development.pdf",
+          name: "System Software",
+          pdf: "/IT/SS.pdf",
         },
         {
-          name: "Information Security",
-          pdf: "/pdf/syllabus/it/sem5/information-security.pdf",
-        },
-        {
-          name: "Professional Elective - I",
-          pdf: "/pdf/syllabus/it/sem5/elective-1.pdf",
-        },
-      ],
-
-      6: [
-        {
-          name: "Artificial Intelligence",
-          pdf: "/pdf/syllabus/it/sem6/artificial-intelligence.pdf",
-        },
-        {
-          name: "Machine Learning",
-          pdf: "/pdf/syllabus/it/sem6/machine-learning.pdf",
-        },
-        {
-          name: "Cloud Computing",
-          pdf: "/pdf/syllabus/it/sem6/cloud-computing.pdf",
-        },
-        {
-          name: "Professional Elective - II",
-          pdf: "/pdf/syllabus/it/sem6/elective-2.pdf",
-        },
-      ],
-
-      7: [
-        {
-          name: "Compiler Design",
-          pdf: "/pdf/syllabus/it/sem7/compiler-design.pdf",
+          name: "Web Application Development",
+          pdf: "/IT/WAD.pdf",
         },
         {
           name: "Cyber Security",
-          pdf: "/pdf/syllabus/it/sem7/cyber-security.pdf",
+          pdf: "/IT/CS.pdf",
         },
         {
-          name: "Major Project - I",
-          pdf: "/pdf/syllabus/it/sem7/project-1.pdf",
+          name: "Data Science",
+          pdf: "/IT/DS.pdf",
         },
         {
-          name: "Professional Elective - III",
-          pdf: "/pdf/syllabus/it/sem7/elective-3.pdf",
+          name:"Advanced Database Management System",
+          pdf: "/IT/ADBMS1.pdf",
         },
+        {
+          name:"Algorithm Analysis and Design",
+          pdf: "/IT/ADBMS.pdf"
+        }
+      ],
+
+      6: [
+         {
+          name: "Advanced Web Development",
+          pdf: "/IT/",
+        },
+        {
+          name: "Agile Development and UI/UX Design",
+          pdf: "/IT/",
+        },
+        {
+          name: "Data Analysis and Visualization",
+          pdf: "/IT/",
+        },
+        {
+          name: "Artificial Intelligence and Machine Learning",
+          pdf: "/IT/",
+        },
+        {
+          name: "Pattern Recognition",
+          pdf: "/IT/",
+        },
+        {
+          name: "Formal Language and Automata Theory",
+          pdf: "/IT/",
+        },
+      ],
+           //effective from 2020
+      7: [
+        {
+          name: "Information Retrieval",
+          pdf: "/IT/IR.pdf",
+        },
+        {
+          name: "Internet of Things",
+          pdf: "/IT/IoT.pdf",
+        },
+        {
+          name: "Wireless Communication",
+          pdf: "/IT/WC.pdf",
+        },
+        {
+          name: "Agile Development and UI/UX Design",
+          pdf: "/IT/AD-UIUX.pdf",
+        },
+        {
+          name: "Graph Theory and Combinatorics",
+          pdf: "/IT/GTC.pdf",
+        },
+        {
+          name: "Software Project Management",
+          pdf: "/IT/SPM (3).pdf",
+        },
+        {
+         name: "Summer Internship Report",
+         pdf: "/CE/sem_7_report_final_bordered.pdf",
+          },
+        
       ],
 
       8: [
-        {
-          name: "Major Project - II",
-          pdf: "/pdf/syllabus/it/sem8/project-2.pdf",
-        },
+        
         {
           name: "Internship",
-          pdf: "/pdf/syllabus/it/sem8/internship.pdf",
+          pdf: "/IT/Internship-Project (2).pdf",
         },
-        {
-          name: "Professional Elective - IV",
-          pdf: "/pdf/syllabus/it/sem8/elective-4.pdf",
-        },
+        
       ],
     },
   },
