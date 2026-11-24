@@ -165,10 +165,7 @@ const syllabusData = {
           name: ".Net Technology",
           pdf: "/CE/",
         },
-        {
-          name: "Software Engineering",
-          pdf: "/CE/",
-        },
+       
         {
           name: "Image Processing",
           pdf: "/CE/",
