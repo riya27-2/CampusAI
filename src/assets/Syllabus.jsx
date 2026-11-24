@@ -459,99 +459,72 @@ const syllabusData = {
 };
 
 function Syllabus() {
-  const [selectedBranch, setSelectedBranch] = useState("CE");
+  const [selectedDept, setSelectedDept] = useState("CE");
   const [selectedSemester, setSelectedSemester] = useState(1);
 
-  const branch = syllabusData[selectedBranch];
-  const subjects = branch.semesters[selectedSemester] || [];
+  const subjects =
+    syllabusData[selectedDept].semesters[selectedSemester] || [];
 
   return (
     <div className="syllabus-page">
 
       <div className="syllabus-header">
         <h1>Syllabus</h1>
-        <p>View semester-wise syllabus and subject documents</p>
       </div>
 
-      {/* Branch Selection */}
-      <div className="branch-section">
-        <h2>Select Branch</h2>
-
-        <div className="branch-buttons">
-          {Object.entries(syllabusData).map(([key, value]) => (
-            <button
-              key={key}
-              className={`branch-btn ${
-                selectedBranch === key ? "active" : ""
-              }`}
-              onClick={() => {
-                setSelectedBranch(key);
-                setSelectedSemester(1);
-              }}
-            >
-              {value.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Selected Branch */}
-      <div className="selected-branch">
-        <h2 id="branch">{branch.name}</h2>
-        <span>GTU Undergraduate Programme</span>
+      {/* Department Tabs */}
+      <div className="syllabus-dept-tabs">
+        {Object.keys(syllabusData).map((dept) => (
+          <button
+            key={dept}
+            className={`syllabus-dept-btn ${
+              selectedDept === dept ? "active" : ""
+            }`}
+            onClick={() => {
+              setSelectedDept(dept);
+              setSelectedSemester(1);
+            }}
+          >
+            {dept} - {syllabusData[dept].name}
+          </button>
+        ))}
       </div>
 
       {/* Semester Tabs */}
-      <div className="semester-section">
-        <h3>Select Semester</h3>
-
-        <div className="semester-tabs">
-          {Object.keys(branch.semesters).map((semester) => (
-            <button
-              key={semester}
-              className={`semester-btn ${
-                selectedSemester === Number(semester) ? "active" : ""
-              }`}
-              onClick={() => setSelectedSemester(Number(semester))}
-            >
-              Semester {semester}
-            </button>
-          ))}
-        </div>
+      <div className="syllabus-semester-tabs">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((semester) => (
+          <button
+            key={semester}
+            className={`syllabus-semester-btn ${
+              selectedSemester === semester ? "active" : ""
+            }`}
+            onClick={() => setSelectedSemester(semester)}
+          >
+            Semester {semester}
+          </button>
+        ))}
       </div>
 
-      {/* Subjects */}
-      <div className="subjects-section">
-        <div className="semester-title">
-          <h2>Semester {selectedSemester}</h2>
-          <span>{subjects.length} Subjects</span>
-        </div>
+      {/* Subject Names and PDFs */}
+      <div className="syllabus-subject-grid">
+        {subjects.map((subject, index) => (
+          <div className="syllabus-subject-card" key={index}>
 
-        <div className="subject-grid">
-          {subjects.map((subject, index) => (
-            <div className="subject-card" key={index}>
-              <div className="subject-number">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-
-              <div className="subject-info">
-                <h3>{subject.name}</h3>
-                <p>
-                  {branch.name} • Semester {selectedSemester}
-                </p>
-              </div>
-
-              <a
-                href={subject.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pdf-btn"
-              >
-                View PDF
-              </a>
+            <div className="syllabus-subject-info">
+              <h3>{subject.name}</h3>
             </div>
-          ))}
-        </div>
+
+            <a
+              href={subject.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="syllabus-pdf-btn"
+            >
+              View PDF
+            </a>
+
+          </div>
+        ))}
       </div>
 
     </div>

@@ -1,169 +1,141 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
 
+const API = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/api\/?$/, "");
+
+function authHeaders() {
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+// Notice ki sirf headline: title ho to wahi, warna message ki pehli line
+function headline(p) {
+  const text = (p.title || p.description || "").trim().split("\n")[0];
+  if (!text) return "Image update";
+  return text.length > 90 ? text.slice(0, 90) + "…" : text;
+}
+
 function Dashboard() {
+  const navigate = useNavigate();
+
+  const [stats, setStats] = useState(null);
+  const [notices, setNotices] = useState([]);
+  const [dataLoading, setDataLoading] = useState(true);
+  const [dataError, setDataError] = useState("");
+
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const [statsRes, postsRes] = await Promise.all([
+          fetch(`${API}/api/dashboard/stats`, { headers: authHeaders() }),
+          fetch(`${API}/api/posts`, { headers: authHeaders() }),
+        ]);
+        const statsData = await statsRes.json();
+        const postsData = await postsRes.json();
+        if (!statsRes.ok) throw new Error(statsData.error || "Could not load stats");
+        if (!postsRes.ok) throw new Error(postsData.error || "Could not load notices");
+        setStats(statsData);
+        setNotices(postsData.slice(0, 5)); // backend naye-se-purane order mein deta hai
+      } catch (err) {
+        console.error(err);
+        setDataError(err.message);
+      } finally {
+        setDataLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  async function askAI() {
+    const q = question.trim();
+    if (!q || loading) return;
+
+    setLoading(true);
+    setAnswer("");
+
+    try {
+      const res = await fetch(`${API}/api/ai/ask`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...authHeaders() },
+        body: JSON.stringify({ question: q }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || data.error || "Request failed");
+      setAnswer(data.answer);
+    } catch (err) {
+      console.error(err);
+      setAnswer("Error: " + err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const muted = { color: "#6b7280", fontSize: 14, padding: "12px 0" };
+
   return (
     <section className="dashboard">
 
-      {/* Welcome */}
-      <div className="welcome">
-        <div>
-          <p className="small-title">WELCOME TO CAMPUSAI</p>
+      {dataError && <p style={{ color: "#b42318", fontSize: 14 }}>{dataError}</p>}
 
-          <h1>
-            Smart College.
-            <br />
-            Smarter Learning.
-          </h1>
-
-          <p>
-            Manage academics, discover learning resources and
-            get assistance from AI — all in one place.
-          </p>
-
-          <button className="primary-btn">
-            🤖 Ask CampusAI
-          </button>
-        </div>
-
-        <div className="welcome-icon">
-          🤖
-        </div>
-      </div>
-
-      {/* Statistics */}
-      <div className="stats">
+      {/* Registered users */}
+      <div className="stats" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
 
         <div className="stat-card">
           <div className="stat-icon">👨‍🎓</div>
           <div>
-            <span>Total Students</span>
-            <h2>1,250</h2>
+            <span>Registered Students</span>
+            <h2>{stats ? stats.students.toLocaleString("en-IN") : "–"}</h2>
           </div>
         </div>
 
         <div className="stat-card">
           <div className="stat-icon">👨‍🏫</div>
           <div>
-            <span>Faculty Members</span>
-            <h2>85</h2>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-icon">📚</div>
-          <div>
-            <span>Courses</span>
-            <h2>32</h2>
-          </div>
-        </div>
-
-        <div className="stat-card">
-          <div className="stat-icon">🏢</div>
-          <div>
-            <span>Departments</span>
-            <h2>8</h2>
+            <span>Registered Faculty</span>
+            <h2>{stats ? stats.professors.toLocaleString("en-IN") : "–"}</h2>
           </div>
         </div>
 
       </div>
 
-      {/* Middle Section */}
-      <div className="content-grid">
-
-        {/* Upcoming Events */}
-        <div className="card">
-          <div className="card-header">
-            <div>
-              <h3>Upcoming Events</h3>
-              <p>What's happening at college</p>
-            </div>
-
-            <button>View All</button>
+      {/* Recent Notices: sirf headlines */}
+      <div className="card">
+        <div className="card-header">
+          <div>
+            <h3>Recent Notices</h3>
+            <p>Latest announcements</p>
           </div>
 
-          <div className="event">
-            <div className="date">
-              <strong>25</strong>
-              <span>SEP</span>
-            </div>
-
-            <div>
-              <h4>AI & Machine Learning Workshop</h4>
-              <p>10:00 AM • Seminar Hall</p>
-            </div>
-          </div>
-
-          <div className="event">
-            <div className="date">
-              <strong>28</strong>
-              <span>SEP</span>
-            </div>
-
-            <div>
-              <h4>Tech Fest 2026</h4>
-              <p>9:00 AM • College Campus</p>
-            </div>
-          </div>
-
-          <div className="event">
-            <div className="date">
-              <strong>02</strong>
-              <span>OCT</span>
-            </div>
-
-            <div>
-              <h4>Guest Lecture</h4>
-              <p>11:00 AM • Auditorium</p>
-            </div>
-          </div>
+          <button onClick={() => navigate("/Updates")}>View All</button>
         </div>
 
-        {/* Notices */}
-        <div className="card">
-          <div className="card-header">
-            <div>
-              <h3>Recent Notices</h3>
-              <p>Latest college announcements</p>
-            </div>
+        {dataLoading && <p style={muted}>Loading...</p>}
+        {!dataLoading && notices.length === 0 && <p style={muted}>No notices yet.</p>}
 
-            <button>View All</button>
-          </div>
-
-          <div className="notice">
+        {notices.map((p) => (
+          <div
+            className="notice"
+            key={p._id}
+            onClick={() => navigate("/Updates")}
+            style={{ cursor: "pointer" }}
+          >
             <div className="notice-icon">📢</div>
 
             <div>
-              <h4>Mid-Semester Examination</h4>
-              <p>Exam schedule has been published.</p>
-              <span>2 hours ago</span>
+              <h4>{headline(p)}</h4>
             </div>
           </div>
-
-          <div className="notice">
-            <div className="notice-icon">📚</div>
-
-            <div>
-              <h4>New Study Material</h4>
-              <p>New notes have been uploaded.</p>
-              <span>Yesterday</span>
-            </div>
-          </div>
-
-          <div className="notice">
-            <div className="notice-icon">🎓</div>
-
-            <div>
-              <h4>Academic Calendar</h4>
-              <p>Updated academic calendar is available.</p>
-              <span>2 days ago</span>
-            </div>
-          </div>
-        </div>
-
+        ))}
       </div>
 
       {/* AI Assistant */}
-      <div className="ai-card">
+      <div className="ai-card" id="ask-ai">
 
         <div className="ai-icon">🤖</div>
 
@@ -181,63 +153,19 @@ function Dashboard() {
             <input
               type="text"
               placeholder="Ask something like: What subjects are in Semester 7?"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && askAI()}
             />
 
-            <button>Ask AI →</button>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Academic Content */}
-      <div className="card academic-card">
-
-        <div className="card-header">
-          <div>
-            <h3>Recent Academic Content</h3>
-            <p>Recently added learning resources</p>
+            <button onClick={askAI} disabled={loading}>
+              {loading ? "Thinking..." : "Ask AI →"}
+            </button>
           </div>
 
-          <button>View All</button>
-        </div>
-
-        <div className="academic-list">
-
-          <div className="academic-item">
-            <div className="file-icon">📄</div>
-
-            <div>
-              <h4>Artificial Intelligence - Unit 2 Notes</h4>
-              <p>
-                Uploaded by Prof. Rahul Patel • 2 hours ago
-              </p>
-            </div>
-
-            <button>View</button>
-          </div>
-
-          <div className="academic-item">
-            <div className="file-icon">📝</div>
-
-            <div>
-              <h4>Database Management Assignment</h4>
-              <p>Semester 7 • Due 30 September</p>
-            </div>
-
-            <button>View</button>
-          </div>
-
-          <div className="academic-item">
-            <div className="file-icon">📊</div>
-
-            <div>
-              <h4>Web Development Session Plan</h4>
-              <p>Semester 7 • 15 Sessions</p>
-            </div>
-
-            <button>View</button>
-          </div>
-
+          {answer && (
+            <p style={{ marginTop: 16, whiteSpace: "pre-wrap" }}>{answer}</p>
+          )}
         </div>
 
       </div>

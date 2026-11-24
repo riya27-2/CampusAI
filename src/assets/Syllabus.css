@@ -1,231 +1,135 @@
 .syllabus-page {
-  padding: 30px;
-  color: #ffffff;
-}
-
-/* Header */
-
-.syllabus-header {
-  margin-bottom: 30px;
+  padding: 28px 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .syllabus-header h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
 }
 
-.syllabus-header p {
-  color: #9ca3af;
-  font-size: 15px;
-}
-
-/* Branch */
-
-.branch-section {
-  margin-bottom: 25px;
-}
-
-.branch-section h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.branch-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.branch-btn {
-  padding: 12px 20px;
-  border: 1px solid #374151;
-  background: #111827;
-  color: #d1d5db;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.branch-btn:hover {
-  border-color: #6366f1;
-}
-
-.branch-btn.active {
-  background: #4f46e5;
-  color: white;
-  border-color: #4f46e5;
-}
-
-/* Selected Branch */
-
-.selected-branch {
-  background: #111827;
-  border: 1px solid #1f2937;
-  padding: 22px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-}
-#branch{
-  color:#ffffff;
-}
-.selected-branch h2 {
-  margin: 0 0 5px;
-  font-size: 24px;
-}
-
-.selected-branch span {
-  color: #9ca3af;
-  font-size: 14px;
-}
-
-/* Semester */
-
-.semester-section {
-  margin-bottom: 30px;
-}
-
-.semester-section h3 {
-  font-size: 17px;
-  margin-bottom: 15px;
-}
-
-.semester-tabs {
+/* Semester tabs */
+.syllabus-semester-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 24px;
 }
 
-.semester-btn {
-  padding: 10px 16px;
-  background: #111827;
-  color: #d1d5db;
-  border: 1px solid #374151;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.semester-btn:hover {
-  border-color: #6366f1;
-}
-
-.semester-btn.active {
-  background: #4f46e5;
-  color: white;
-  border-color: #4f46e5;
-}
-
-/* Semester Title */
-
-.semester-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
-.semester-title h2 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.semester-title span {
-  color: #9ca3af;
+.syllabus-semester-btn {
+  padding: 10px 18px;
   font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Subjects */
+.syllabus-semester-btn:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4f46e5;
+}
 
-.subject-grid {
+.syllabus-semester-btn.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+/* Subject cards */
+.syllabus-subject-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.subject-card {
-  background: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 12px;
-  padding: 20px;
+.syllabus-subject-card {
   display: flex;
   align-items: center;
-  gap: 15px;
-  transition: 0.2s;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.subject-card:hover {
-  border-color: #4f46e5;
+.syllabus-subject-card:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1);
   transform: translateY(-2px);
 }
 
-.subject-number {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #1e1b4b;
-  color: #818cf8;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-.subject-info {
-  flex: 1;
-}
-
-.subject-info h3 {
-  font-size: 16px;
-  margin: 0 0 6px;
-}
-
-.subject-info p {
+.syllabus-subject-info h3 {
   margin: 0;
-  color: #9ca3af;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
 }
 
-.pdf-btn {
+.syllabus-pdf-btn {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
+  background: #eef2ff;
+  border-radius: 8px;
   text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.syllabus-pdf-btn:hover {
   background: #4f46e5;
-  color: white;
-  padding: 9px 14px;
-  border-radius: 7px;
-  font-size: 13px;
-  white-space: nowrap;
-  transition: 0.2s;
+  color: #ffffff;
+}
+/* Department tabs */
+.syllabus-dept-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.pdf-btn:hover {
-  background: #4338ca;
+.syllabus-dept-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4f46e5;
+  background: #ffffff;
+  border: 2px solid #c7d2fe;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Responsive */
-
-@media (max-width: 900px) {
-  .subject-grid {
-    grid-template-columns: 1fr;
-  }
+.syllabus-dept-btn:hover {
+  background: #eef2ff;
 }
 
-@media (max-width: 600px) {
+.syllabus-dept-btn.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+/* Mobile */
+@media (max-width: 768px) {
   .syllabus-page {
-    padding: 20px;
+    padding: 20px 16px 32px;
   }
 
-  .subject-card {
-    flex-wrap: wrap;
-  }
-
-  .pdf-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .semester-title {
-    align-items: flex-start;
-    gap: 10px;
-    flex-direction: column;
+  .syllabus-subject-grid {
+    grid-template-columns: 1fr;
   }
 }

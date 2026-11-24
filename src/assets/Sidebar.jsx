@@ -1,6 +1,9 @@
+import { useAuth } from "../Context/AuthContext";
 import { NavLink } from "react-router-dom";
 
 function Sidebar() {
+    const { user } = useAuth();
+
   return (
     <aside className="sidebar">
 
@@ -32,28 +35,26 @@ function Sidebar() {
           💰 Fee Structure
         </NavLink>
 
-       
+       <NavLink to="/Updates">🔔 Updates</NavLink>
 
         <NavLink to="/syllabus">
           📄 Syllabus
         </NavLink>
-
-        <NavLink to="/notices">
-          📢 Notices
-        </NavLink>
-
-        <NavLink to="/events">
-          🎉 Events
-        </NavLink>
-        <NavLink to="/StudentSupport">
-          💰 Student Support
-        </NavLink>
+       
+       <NavLink to="/gtu-papers">
+  📚 Previous GTU Papers
+</NavLink>
+       {user?.role === "professor" && (
+  <NavLink to="/syllabusplanner">🗓️ Syllabus Planner</NavLink>
+)}
+       
+{user?.role === "student" && (
+  <NavLink to="/StudentSupport">🤝 Student Support</NavLink>
+)}
 
       </nav>
 
-      <div className="sidebar-bottom">
-        <a href="#">↪ Logout</a>
-      </div>
+      
 
     </aside>
   );
