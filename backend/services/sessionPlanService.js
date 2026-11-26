@@ -28,17 +28,19 @@ Rules:
 {"sessions":[{"sessionNo":1,"topic":"","subtopics":[""],"objectives":[""],"activities":[""],"assessment":"","references":[""]}]}
 
 SYLLABUS:
-${syllabusText.slice(0, 30000)}`;
+${syllabusText.slice(0, 12000)}`;
 
   let parsed = null;
   let lastError = null;
 
-  // Parse fail ho to dobara generate karo (free models unreliable hote hain)
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  // Render ~100 sec pe request kaat deta hai, isliye sirf 1 attempt
+  for (let attempt = 1; attempt <= 1; attempt++) {
     try {
       const result = await generate({
         contents: [{ role: "user", parts: [{ text: prompt }] }],
         generationConfig: { responseMimeType: "application/json" },
+        budgetMs: 85000,
+        callTimeoutMs: 60000,
       });
 
       const text = result.response.text();
