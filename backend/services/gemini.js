@@ -1,3 +1,48 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+/* ------------------------------------------------------------------
+   Embeddings: Gemini
+   Chat / jawab: OpenRouter
+   File ka naam gemini.js hi rakha hai taaki baaki imports na badalne padein.
+------------------------------------------------------------------- */
+
+// ---------- Embeddings (Gemini) ----------
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const embedModel = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
+
+export async function embed(text) {
+  const res = await embedModel.embedContent(text);
+  return res.embedding.values;
+}
+
+// ---------- Chat (OpenRouter) ----------
+const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+console.log("OpenRouter key mili?", Boolean(process.env.OPENROUTER_API_KEY));
+
+// .env: OPENROUTER_MODELS=model1:free,model2 (order mein try honge)
+const MODELS = (process.env.OPENROUTER_MODELS || "openrouter/free")
+  .split(",")
+  .map((m) => m.trim())
+  .filter(Boolean);
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function toPromptText(request) {
+  if (typeof request === "string") return request;
+  return request.contents.map((c) => c.parts.map((p) => p.text).join("\n")).join("\n");
+}
+
+function wantsJson(request) {
+  return typeof request !== "string" && request.generationConfig?.responseMimeType === "application/json";
+}
+
+function extractJson(text) {
+  const clean = text.replace(/```json|```/g, "").trim();
+  const start = clean.indexOf("{");
+  const end = clean.lastIndexOf("}");
+  return start === -1 || end === -1 ? clean : clean.slice(start, end + 1);
+}
+
 export async function generate(request) {
   const prompt = toPromptText(request);
   const json = wantsJson(request);
@@ -48,6 +93,7 @@ export async function generate(request) {
           throw err;
         }
 
+        // Output beech mein kat gaya to kata hua JSON aage mat bhejo
         if (choice?.finish_reason === "length") {
           const err = new Error("Output token limit par kat gaya");
           err.status = 413;
@@ -57,6 +103,7 @@ export async function generate(request) {
 
         if (json) text = extractJson(text);
 
+        // Purane code ke saath compatible: result.response.text()
         return { response: { text: () => text } };
       } catch (e) {
         lastError = e;
