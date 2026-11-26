@@ -10,13 +10,20 @@ import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
+const allowedOrigins = [
+  "https://campus-ai-kohl.vercel.app",
+  process.env.FRONTEND_URL,
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5173",
+].filter(Boolean);
+
+console.log("CORS allowed origins:", allowedOrigins);
+
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL,
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "http://127.0.0.1:5173",
-  ].filter(Boolean),
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(express.json({ limit: "100kb" }));
 
