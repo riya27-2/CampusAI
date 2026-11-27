@@ -16,6 +16,7 @@ import AuthPages from "./Pages/AuthPages";
 
 import "./assets/dashboard.css";
 
+
 /* Role Based Route Protection */
 function RoleRoute({ roles, children }) {
   const { user } = useAuth();

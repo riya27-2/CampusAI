@@ -123,6 +123,57 @@
   border-color: #4f46e5;
   color: #ffffff;
 }
+
+.syllabus-upload-form {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.syllabus-upload-form h2 {
+  width: 100%;
+  margin: 0 0 8px;
+}
+
+.syllabus-upload-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.syllabus-upload-form button,
+.syllabus-delete-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.syllabus-upload-form button {
+  background: #2563eb;
+  color: white;
+}
+
+.syllabus-delete-btn {
+  background: #dc2626;
+  color: white;
+  margin-left: 8px;
+}
+
+.syllabus-upload-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.syllabus-error {
+  color: #dc2626;
+  margin: 12px 0;
+}
 /* Mobile */
 @media (max-width: 768px) {
   .syllabus-page {

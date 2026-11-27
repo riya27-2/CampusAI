@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch --env-file=.env server.js",
     "start": "node server.js",
-    "seed": "node --env-file=.env seed/seed.js"
+    "seed": "node --env-file=.env seed/seed.js",
+    "migrate:syllabus": "node --env-file=.env scripts/migrateSyllabus.js"
   },
   "engines": {
     "node": ">=20.6"
@@ -15,6 +16,7 @@
     "@google/genai": "^1.0.0",
     "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "cors": "^2.8.5",
     "express": "^4.22.3",
     "express-rate-limit": "^7.4.0",
